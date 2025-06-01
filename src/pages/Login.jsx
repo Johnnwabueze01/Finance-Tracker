@@ -1,4 +1,59 @@
-import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { auth, provider } from '../firebase';
+import { signInWithPopup } from 'firebase/auth';
+
+export default function Login() {
+  const { setUser } = useAuth();
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      setUser(result.user);
+    } catch (error) {
+      console.error('Login error:', error);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-sky-500 to-indigo-500 p-4">
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-center">Finance Tracker Login</h1>
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full py-3 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 transition mb-4"
+        >
+          Sign in with Google
+        </button>
+        <div className="text-center text-gray-500">or</div>
+        <form className="mt-4 space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full p-3 border border-gray-300 rounded-md"
+            disabled
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full p-3 border border-gray-300 rounded-md"
+            disabled
+          />
+          <button
+            type="submit"
+            className="w-full py-3 bg-gray-400 text-white font-semibold rounded-md cursor-not-allowed"
+            disabled
+          >
+            Sign in (coming soon)
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+
+
+/*import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
@@ -32,13 +87,13 @@ const Login = () => {
 
   return (
     <div>
-      <div className="text-white bg-[#000000ec] fixed w-full  px-0 py-0 flex justify-between">
-        <div className="text-white text-2xl flex justify-center items-center">
+      <div className=" fixed w-full  px-0 py-0 flex justify-between">
+        <div className=" text-2xl flex justify-center items-center">
             <img src={Logo}  alt="Logo" width={130}  />
             <h2>Finance Tracker</h2>
         </div>
     </div>
-    <div className="bg-black bg-[url(/background-i.svg)] h-screen pt-40 ">
+    <div className="h-screen pt-40 ">
       
     <div className="p-4 border bg-white flex flex-col justify-center items-center max-w-sm mx-auto rounded-xl shadow">
       
@@ -85,3 +140,4 @@ const Login = () => {
 };
 
 export default Login;
+*/

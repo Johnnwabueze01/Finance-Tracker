@@ -1,21 +1,39 @@
+/*// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAEGPwlz23Lf1WzksZ_TvxYoLiWOPzE4J4",
-  authDomain: "finance-tracker-e4474.firebaseapp.com",
-  projectId: "finance-tracker-e4474",
-  storageBucket: "finance-tracker-e4474.firebasestorage.app",
-  messagingSenderId: "215241015586",
-  appId: "1:215241015586:web:642eff61e3a2daa62e657b"
+  apiKey: "AIzaSyB6Yw15j6Kf0P4OTnW1SJSMvmlaPfnCKW8",
+  authDomain: "finance-c6da4.firebaseapp.com",
+  projectId: "finance-c6da4",
+  storageBucket: "finance-c6da4.firebasestorage.app",
+  messagingSenderId: "971653341667",
+  appId: "1:971653341667:web:e6c075c110af767a7bc0d6",
+  measurementId: "G-94MQXQQJQC"
 };
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+*/
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB6Yw15j6Kf0P4OTnW1SJSMvmlaPfnCKW8",
+  authDomain: "finance-c6da4.firebaseapp.com",
+  projectId: "finance-c6da4",
+  storageBucket: "finance-c6da4.firebasestorage.app",
+  messagingSenderId: "971653341667",
+  appId: "1:971653341667:web:e6c075c110af767a7bc0d6",
+  measurementId: "G-94MQXQQJQC" // Optional
+};
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
 
-export { auth, provider };
-
-
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();
